@@ -89,7 +89,7 @@ Download the Repository. Open your AWS Console and follow the below steps to mak
        * Click on Details
 
 
-10. Go to API Gateway
+10. Go to API Gateway in Networking and Content Delivery
     * Create API
     * API name - PostReaderAPI
     * Description - My API for polly
