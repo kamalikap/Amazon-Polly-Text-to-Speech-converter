@@ -3,12 +3,12 @@
 
 Using:
 
-# * Lambda
-# * S3
-# * DynamoDB
-# * IAM (Identity Access Management)
-# * API Gateway
-# * SNS (Simple Notification Service)
+* Lambda
+* S3
+* DynamoDB
+* IAM (Identity Access Management)
+* API Gateway
+* SNS (Simple Notification Service)
 
 Download the Repository. Open your AWS Console and follow the below steps to make Amazon Polly Speak.
 
