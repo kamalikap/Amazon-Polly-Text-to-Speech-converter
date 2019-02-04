@@ -115,7 +115,7 @@ Download the Repository. Open your AWS Console and follow the below steps to mak
    * Click on "polly.website".
       * Permissions- Bucket Policy
       * Copy paste the existing bucket policy code- "bucketpolicypermissions.json" and paste it.
-      * Change the Resource to "arn:aws:s3:::help-me-to-learn-polly", click Save.
+      * Change the Resource to "arn:aws:s3:::polly.website/*", click Save.
       * Click the bucket then add- "index.html", "scripts.js", "style.css". Click on the link in index.html to get the page.
 
 
