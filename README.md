@@ -107,7 +107,7 @@ Download the Repository. Open your AWS Console and follow the below steps to mak
        * Add mapping - application/json, click tick.
        * get mappings.json and paste it on the box.
     * Click on "/", then Actions- Deploy API, click on deployment stage- New stage,  name, description - "prod". Click Deploy.
-    * Copy the Invoke URL and paste it in var END_Point.
+    * Copy the Invoke URL and paste it in "var END_Point" in script.js.
 
 
 
