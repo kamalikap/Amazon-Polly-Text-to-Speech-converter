@@ -16,28 +16,28 @@ Download the Repository. Open your AWS Console and follow the below steps to mak
 1. First check your region and make sure it's Northern-Virginia.
 
 2. Go to DynamoDB under Databases. Create Table
-  . Table name - posts
-  . Primary key- id
-  . Hit Create
+  * Table name - posts
+  * Primary key- id
+  * Hit Create
 
 3. Go to S3. Create two buckets poly.mp3 and polly.website. Make both public by going to "Edit public access settings".
 
 4. Go to "Simple Notification Service" in Application Integration. 
-  .Create topic
-    . Topic name- new_posts
-    . Display name- New Posts
+  *Create topic
+    * Topic name- new_posts
+    * Display name- New Posts
 
 5. Go to "IAM" in Security and compliance. Go to Roles
-    . Create Role
-        . Select Lambda then Next
-        . Create Policy
+    * Create Role
+        * Select Lambda then Next
+        * Create Policy
              > click Json and paste the lambdapolicy.json.
              > Name- Lambda-policy-polly
              >Description -Lambda-policy-polly and Create Policy
-    . Go  back to create role and then lambda, then search for "Lambda-policy-polly", next.
-      . Role name- Lambda-policy-polly
-      . Description- Lambda-policy-polly
-      . Create Role
+    * Go  back to create role and then lambda, then search for "Lambda-policy-polly", next.
+      * Role name- Lambda-policy-polly
+      * Description- Lambda-policy-polly
+      * Create Role
 
 6. Open Lambda and create a function
     . Author from Scratch, then 
