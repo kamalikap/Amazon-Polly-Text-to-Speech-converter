@@ -31,92 +31,92 @@ Download the Repository. Open your AWS Console and follow the below steps to mak
     * Create Role
         * Select Lambda then Next
         * Create Policy
-             > click Json and paste the lambdapolicy.json.
-             > Name- Lambda-policy-polly
-             >Description -Lambda-policy-polly and Create Policy
+             * click Json and paste the lambdapolicy.json.
+             * Name- Lambda-policy-polly
+             *Description -Lambda-policy-polly and Create Policy
     * Go  back to create role and then lambda, then search for "Lambda-policy-polly", next.
       * Role name- Lambda-policy-polly
       * Description- Lambda-policy-polly
       * Create Role
 
 6. Open Lambda and create a function
-    . Author from Scratch, then 
-         Name- PostReader_New-posts
-         Runtime- Python 2.7
-         Role-Choose existing role
-         Existing role - Lambda-policy-polly then create function
-    . Copy the code from newposts.py to function code. 
-    . Copy "DB_TABLE_NAME" then paste it to environmental variables as key then write value as "posts". Copy whole "arn" of newposts in SNS and paste it.
-        > DB_TABLE_NAME - posts
-        > SNS_TOPIC - arn:aws:sns:us-east-1:307328585937:new_posts
-    . Basic description - This post creates dynamodb.
-    . Click Save.
-    . Click Test
-       > Event name- HelloJoanna
-       > Get sample.json from directory and paste in the json file.
-       > Click Create
-       > Click Test
-       > Click on Details
+    * Author from Scratch, then 
+        *Name- PostReader_New-posts
+        *Runtime- Python 2.7
+        *Role-Choose existing role
+        *Existing role - Lambda-policy-polly then create function
+    * Copy the code from newposts.py to function code. 
+    * Copy "DB_TABLE_NAME" then paste it to environmental variables as key then write value as "posts". Copy whole "arn" of newposts in SNS and paste it.
+        * DB_TABLE_NAME - posts
+        * SNS_TOPIC - arn:aws:sns:us-east-1:307328585937:new_posts
+    * Basic description - This post creates dynamodb.
+    * Click Save.
+    * Click Test
+       * Event name- HelloJoanna
+       * Get sample.json from directory and paste in the json file.
+       * Click Create
+       * Click Test
+       * Click on Details
 
 7. Go to DynamoDB under Databases.
-    . Click Tables-> posts->items-> The post is created with unique ID.
+    * Click Tables-> posts->items-> The post is created with unique ID.
 
 8. Creating second Lambda function-
-    . Call it "PostReader_ConvertToAudio" and do the same specifications and create the function.
-    . In Designer click SNS 
-    . In Configure trigger select new_posts and click Add then Save.
-    . Go to Function code- and paste the converttoaudio.py code.
-    . In the Environmental variables, we have :
-       > DB_TABLE_NAME - posts
-       > BUCKET_NAME -poly.mp3
-    . Basic settings- This lambda function converts my text to audio and saves in S3. Click Save.
-       > Timeout-5 min.
+    * Call it "PostReader_ConvertToAudio" and do the same specifications and create the function.
+    * In Designer click SNS 
+    * In Configure trigger select new_posts and click Add then Save.
+    * Go to Function code- and paste the converttoaudio.py code.
+    * In the Environmental variables, we have :
+       * DB_TABLE_NAME - posts
+       * BUCKET_NAME -poly.mp3
+    * Basic settings- This lambda function converts my text to audio and saves in S3. Click Save.
+       * Timeout-5 min.
 
 
  9. Third lambda function is to "Get Posts"
-    . Create a function & Call it "PostReader_GetPosts" and do the same specifications and create the function.
-    . Go to Function code- and paste the getposts.py code.
-    . In the Environmental variables, we have :
-       > DB_TABLE_NAME - posts
-    . Basic settings- This gets all posts from our DynamoDB Table. Click Save.
-    . Click Test
-       > Event name- TestEvent
-       > {
+    * Create a function & Call it "PostReader_GetPosts" and do the same specifications and create the function.
+    * Go to Function code- and paste the getposts.py code.
+    * In the Environmental variables, we have :
+       * DB_TABLE_NAME - posts
+    * Basic settings- This gets all posts from our DynamoDB Table. Click Save.
+    * Click Test
+       * Event name- TestEvent
+       * {
   			"postId": "*"
 		 }
-       > Click Create
-       > Click Test
-       > Click on Details
+       * Click Create
+       * Click Test
+       * Click on Details
 
 
 10. Go to API Gateway
-    . Create API
-    . API name - PostReaderAPI
-    . Description - My API for polly
-    . Create API
-    . Actions and "Create Method"
-    . Select "GET" and click on the tick
-    . In Lambda function select PostReader_GetPOsts and click Save.
-    . Select "POST" and click on the tick
-    . In Lambda function select PostReader_NewPOsts and click Save.
-    . Click Actions and "Enable CORS" and click on Enable CORS and YES. This will allow the API to interact with the S3 posts.
-    . Click on "GET", then Method Request, then " URL Query string parameters"
-       > Add query string - postId and click tick.
-    . Click on "GET", then Integration Request, then " Mapping Templates". 
-       > Select- "When there are no templates defined (recommended)"
-       > Add mapping - application/json, click tick.
-       > get mappings.json and paste it on the box.
-    . Click on "/", then Actions- Deploy API, click on deployment stage- New stage,  name, description - "prod". Click Deploy.
-    . Copy the Invoke URL and paste it in var END_Point.
+    * Create API
+    * API name - PostReaderAPI
+    * Description - My API for polly
+    * Create API
+    * Actions and "Create Method"
+    * Select "GET" and click on the tick
+    * In Lambda function select PostReader_GetPOsts and click Save.
+    * Select "POST" and click on the tick
+    * In Lambda function select PostReader_NewPOsts and click Save.
+    * Click Actions and "Enable CORS" and click on Enable CORS and YES. This will allow the API to interact with the S3 posts.
+    * Click on "GET", then Method Request, then " URL Query string parameters"
+       * Add query string - postId and click tick.
+    * Click on "GET", then Integration Request, then " Mapping Templates". 
+       * Select- "When there are no templates defined (recommended)"
+       * Add mapping - application/json, click tick.
+       * get mappings.json and paste it on the box.
+    * Click on "/", then Actions- Deploy API, click on deployment stage- New stage,  name, description - "prod". Click Deploy.
+    * Copy the Invoke URL and paste it in var END_Point.
 
 
 
 11. Go to S3
-   . Create new bucket - "help-me-to-learn-polly" and click on it.
-      > Permissions- Bucket Policy
-      > Copy paste the existing bucket policy code- "bucketpolicypermissions.json" and paste it.
-      > Change the Resource to "arn:aws:s3:::help-me-to-learn-polly", click Save.
-      > Click the bucket then add- "index.html", "scripts.js", "style.css". Click on the link in index.html to get the page and type "*" in the Search box.
+   * Create new bucket - "help-me-to-learn-polly" and click on it.
+      * Permissions- Bucket Policy
+      * Copy paste the existing bucket policy code- "bucketpolicypermissions.json" and paste it.
+      * Change the Resource to "arn:aws:s3:::help-me-to-learn-polly", click Save.
+      * Click the bucket then add- "index.html", "scripts.js", "style.css". Click on the link in index.html to get the page and type "*" in the Search box.
 
 
 12. Go to DynamoDB-> tables->posts-> items-> actions-> Delete.
