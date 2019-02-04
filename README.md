@@ -118,7 +118,8 @@ Download the Repository. Open your AWS Console and follow the below steps to mak
       * Change the Resource to "arn:aws:s3:::polly.website/*", click Save.
       * Click the bucket then add- "index.html", "scripts.js", "style.css". Click on the link in index.html to get the page.
 
+12. Type in the text, then in the Search text box type "*". Click on Search, then play button.
 
-12. Go to DynamoDB-> tables->posts-> items-> actions-> Delete.
+13. Go to DynamoDB-> tables->posts-> items-> actions-> Delete.
 
-13. Go to the page then refresh- Type in the text, click in Speak your voice. Copy the Post ID and paste the box for "Search". Click on the Play button and Enjoy!
+14. Go to the page then refresh- Type in the text, click in Speak your voice. Copy the Post ID and paste the box for "Search". Click on the Play button and Enjoy!
