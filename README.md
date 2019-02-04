@@ -112,11 +112,11 @@ Download the Repository. Open your AWS Console and follow the below steps to mak
 
 
 11. Go to S3
-   * Create new bucket - "help-me-to-learn-polly" and click on it.
+   * Click on "polly.website".
       * Permissions- Bucket Policy
       * Copy paste the existing bucket policy code- "bucketpolicypermissions.json" and paste it.
       * Change the Resource to "arn:aws:s3:::help-me-to-learn-polly", click Save.
-      * Click the bucket then add- "index.html", "scripts.js", "style.css". Click on the link in index.html to get the page and type "*" in the Search box.
+      * Click the bucket then add- "index.html", "scripts.js", "style.css". Click on the link in index.html to get the page.
 
 
 12. Go to DynamoDB-> tables->posts-> items-> actions-> Delete.
