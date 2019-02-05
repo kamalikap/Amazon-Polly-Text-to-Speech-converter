@@ -123,3 +123,6 @@ Download the Repository. Open your AWS Console and follow the below steps to mak
 13. Go to DynamoDB-> tables->posts-> items-> actions-> Delete.
 
 14. Go to the index page then refresh- Type "*" in the Search, nothing will appear. Type the text and click on "Speak your voice". Copy the Post ID and paste the box for "Search". Click on the Play button and Enjoy!
+
+
+Note: Don't forget to delete the table from DynamoDB when not using it.
